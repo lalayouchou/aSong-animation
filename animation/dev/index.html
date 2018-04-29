@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画库示例</title>
+</head>
+<body>
+	<div class="aSong"></div>
+	<button id= 'play'>开始</button>
+	<button id="pause">暂停</button>
+	<button id="finish">finish</button>
+<script type="text/javascript" src="dev.js"></script>
+<script type="text/javascript">
+
+	let box = document.querySelector('.aSong');
+	let playbtn=document.getElementById('play');
+	let pausebtn = document.getElementById('pause');
+	let finishbtn = document.getElementById('finish');
+	let aSong=window.aSong;
+
+	let anim=aSong(box).add({'background-color': 'green','top':'200px'},3000,'Quad-easeInOut',1000).add({'background-color': 'red','left':'200px'},3000,'quad-easein',1000).repeat(2,'2D');
+
+		playbtn.onclick = function () {
+			if(anim.status === 0){
+				console.log(anim);	
+				anim.start();
+
+			}else if (anim.status===2) {
+				console.log(anim);
+				anim.restart();
+			}
+
+		};
+		pausebtn.onclick = function(){
+			anim.pause();
+		}
+		finishbtn.onclick= function() {
+			anim.finish();
+		}
+</script>
+</body>
+</html>
